@@ -101,7 +101,7 @@ void retrieveDataPekerja(struct structAkunPekerja * akunPekerja, int * current_p
     konversi_underscore_ke_spasi(akunPekerja->smp);
     konversi_underscore_ke_spasi(akunPekerja->sma);
     konversi_underscore_ke_spasi(akunPekerja->sarjana);
-    konversi_spasi_ke_underscore(akunPekerja->pengalaman_kerja);
+    konversi_underscore_ke_spasi(akunPekerja->pengalaman_kerja);
 
     fclose(bukaFilePekerja);
     bukaFilePekerja = NULL;
@@ -116,7 +116,6 @@ void prosesLogin(char * username, char * password){
     //buka file
     FILE * bukaFilePekerja = fopen("akun_pencarikerja.txt", "r");
     FILE * bukaFilePerusahaan = fopen("akun_perusahaan.txt", "r");
-
 
     if( (bukaFilePekerja == NULL) && (bukaFilePerusahaan == NULL) ){
         printf("Error file");

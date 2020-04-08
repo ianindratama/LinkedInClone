@@ -24,8 +24,9 @@ void main_menu_pekerja(struct structAkunPekerja * akunPekerja){
     }else if(menu_pekerja == 2){
 
     }else if(menu_pekerja == 3){
+        fflush(stdin);
         system("cls");
-        printf("Berhasil Logout");
+        printf("Berhasil Logout\n");
         main();
     }
 

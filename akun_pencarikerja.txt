@@ -1,1 +1,2 @@
-ian 123456 indratama_pangasian 082189968487 18/06/01 indonesia 30.000.00 sd_harapan_bunda smpk_soverdi smk_ti univ_telkom -
+y y x x x x x x x x x bekerja_di_google
+ian 123456 Indratama_Pangasian_Manalu Indonesia 082189968487 18/06/01 30.000.000 sd_harapan_bunda smpk_soverdi smk_ti s1_tekkom bekerja_di_google
