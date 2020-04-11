@@ -1,6 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "main.h"
+#include "profile_akun_pekerja.h"
+#include "profile_akun_perusahaan.h"
+
+struct structAkunPekerja{
+    char username[50];char password[50];char nama[50];char tanggal_lahir[50];char kewarganegaraan[50];
+    char nomor_telepon[25]; char pref_gaji[50];
+    char sd[50];char smp[50];char sma[50];char sarjana[50]; char pengalaman_kerja[50];
+};
+
+struct structAkunPerusahaan{
+    char username[50]; char password[50];
+    char namaPerusahaan[50]; char kategoriPerusahaan[50]; char alamatPerusahaan[50]; char fasilitasPerusahaan[50];
+};
 
 void input_register_pencarikerja_file(char username[50], char password[50], char nama[50], char tanggal_lahir[50], char kewarganegaraan[50],
                                       char nomor_telepon[25], char pref_gaji[50],
@@ -21,6 +35,13 @@ void konversi_spasi_ke_underscore(char * kata){
 }
 
 void register_pencari_kerja(){
+
+    int jumlah_akun_pekerja = funcJumlahAkunPekerja();
+
+    struct structAkunPekerja semuaAkunPekerja[funcJumlahAkunPekerjaProfile()];
+
+    retrieveSemuaDataPekerjaDiFile(&semuaAkunPekerja);
+
     char username[50];char password[50];char nama[50];char tanggal_lahir[50];char kewarganegaraan[50];
     char nomor_telepon[25]; char pref_gaji[50];
     char sd[50];char smp[50];char sma[50];char sarjana[50]; char pengalaman_kerja[50];
@@ -30,11 +51,30 @@ void register_pencari_kerja(){
     printf("Silahkan mengisi data dibawah ini!\n");
     printf("Username : ");
     gets(username);
+
+    for(int i = 0; i<jumlah_akun_pekerja; i++){
+        while( (strcmp(username, (semuaAkunPekerja+i)->username)) == 0 ){
+            printf("Username yang anda masukkan sudah terdaftar, silahkan gunakan yang lain\n");
+            printf("Username : ");
+            gets(username);
+        }
+    }
+
     printf("Password : ");
     gets(password);
     printf("Nama : ");
     gets(nama);
     konversi_spasi_ke_underscore(nama);
+
+    for(int i = 0; i<jumlah_akun_pekerja; i++){
+        while( (strcmp(nama, (semuaAkunPekerja+i)->nama)) == 0 ){
+            printf("Nama yang anda masukkan sudah terdaftar, silahkan gunakan yang lain\n");
+            printf("Nama : ");
+            gets(nama);
+            konversi_spasi_ke_underscore(nama);
+        }
+    }
+
     printf("Tanggal Lahir(dd/mm/yy) : ");
     gets(tanggal_lahir);
     printf("Kewarganegaraan : ");
@@ -90,6 +130,12 @@ char *sd, char *smp, char *sma, char *sarjana, char *pengalaman_kerja){
 
 void register_perusahaan(){
 
+    int jumlah_akun_perusahaan = funcJumlahAkunPerusahaan();
+
+    struct structAkunPerusahaan semuaAkunPerusahaan[funcJumlahAkunPerusahaan()];
+
+    retrieveSemuaDataPerusahaanDiFile(&semuaAkunPerusahaan);
+
     char username[50]; char password[50];
     char namaPerusahaan[50]; char kategoriPerusahaan[50]; char alamatPerusahaan[50]; char fasilitasPerusahaan[50];
 
@@ -98,11 +144,30 @@ void register_perusahaan(){
     printf("Silahkan mengisi data dibawah ini!\n");
     printf("Username : ");
     gets(username);
+
+    for(int i = 0; i<jumlah_akun_perusahaan; i++){
+        while( (strcmp(username, (semuaAkunPerusahaan+i)->username)) == 0 ){
+            printf("Username yang anda masukkan sudah terdaftar, silahkan gunakan yang lain\n");
+            printf("Username : ");
+            gets(username);
+        }
+    }
+
     printf("Password : ");
     gets(password);
     printf("Nama Perusahaan : ");
     gets(namaPerusahaan);
     konversi_spasi_ke_underscore(namaPerusahaan);
+
+    for(int i = 0; i<jumlah_akun_perusahaan; i++){
+        while( (strcmp(namaPerusahaan, (semuaAkunPerusahaan+i)->namaPerusahaan)) == 0 ){
+            printf("Nama Perusahaan yang anda masukkan sudah terdaftar, silahkan gunakan yang lain\n");
+            printf("Nama Perusahaan : ");
+            gets(namaPerusahaan);
+            konversi_spasi_ke_underscore(namaPerusahaan);
+        }
+    }
+
     printf("Kategori Perusahaan (ex : Teknologi ) : ");
     gets(kategoriPerusahaan);
     konversi_spasi_ke_underscore(kategoriPerusahaan);
