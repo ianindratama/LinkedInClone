@@ -1,2 +1,2 @@
 y y x x x x x x x x x bekerja_di_google
-ian 123456 Indratama_Pangasian_Manalu Indonesia 082189968487 18/06/01 30.000.000 sd_harapan_bunda smpk_soverdi smk_ti s1_tekkom bekerja_di_google
+ian ian123 Indratama_Pangasian_Manalu 082189968487 18/06/01 Indonesia 30.000.000 sd_harapan_bunda smpk_soverdi smk_ti s1_tekkom bekerja_di_google

@@ -23,7 +23,7 @@
 
 1586323445 d:\koding\tutorial c\tubesalproproject\register.h
 
-1586352690 source:d:\koding\tutorial c\tubesalproproject\main_pekerja.c
+1586606229 source:d:\koding\tutorial c\tubesalproproject\main_pekerja.c
 	<stdio.h>
 	<stdlib.h>
 	"login.h"
@@ -35,13 +35,14 @@
 	<stdlib.h>
 	"login.h"
 
-1586370820 source:d:\koding\tutorial c\tubesalproproject\profile_akun_pekerja.c
+1586609716 source:d:\koding\tutorial c\tubesalproproject\profile_akun_pekerja.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"main_pekerja.h"
+	"main.h"
 
-1586370445 source:d:\koding\tutorial c\tubesalproproject\register.c
+1586416279 source:d:\koding\tutorial c\tubesalproproject\register.c
 	<stdio.h>
 	<stdlib.h>
 	"main.h"

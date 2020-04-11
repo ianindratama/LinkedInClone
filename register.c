@@ -131,7 +131,7 @@ void input_register_perusahaan_file(char *username, char *password, char *namaPe
             fclose(bukaFilePerusahaan);
             bukaFilePerusahaan = NULL;
             system("cls");
-            printf("Berhasil Register sebagai pencari kerja\n\n");
+            printf("Berhasil Register sebagai pencari kerja, Silahkan Login menggunakan Akun Anda\n\n");
             main();
         }
     }

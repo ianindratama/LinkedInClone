@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "main_pekerja.h"
+#include "main.h"
 
 struct structAkunPekerja{
     char username[50];char password[50];char nama[50];char tanggal_lahir[50];char kewarganegaraan[50];
@@ -10,7 +11,7 @@ struct structAkunPekerja{
 };
 
 void inputUpdatedDataToStructSemuaPekerja(struct structAkunPekerja * akunPekerja, struct structAkunPekerja * semuaAkunPekerja);
-void inputUpdatedDataToFile(struct structAkunPekerja * semuaAkunPekerja);
+void inputUpdatedDataToFile(struct structAkunPekerja * akunPekerja, struct structAkunPekerja * semuaAkunPekerja);
 
 int funcJumlahAkunPekerjaProfile(){
     FILE * bukaFilePekerja = fopen("akun_pencarikerja.txt", "r");
@@ -60,8 +61,8 @@ void retrieveSemuaDataPekerjaDiFile(struct structAkunPekerja * semuaAkunPekerja)
 void gantiProfilePekerja(struct structAkunPekerja * akunPekerja, struct structAkunPekerja * semuaAkunPekerja){
 
     char buffer[50];
-    printf("\n\n\n");
-    printf("Ganti Profile (gunakan tanda \"-\" jika tidak ingin mengganti\n");
+    printf("\n\n");
+    printf("Ganti Profile (gunakan tanda \"-\" jika tidak ingin mengganti data tersebut)\n");
     printf("Biodata Diri : \n");
     //nama
     printf("Nama : ");
@@ -206,11 +207,11 @@ void inputUpdatedDataToStructSemuaPekerja(struct structAkunPekerja * akunPekerja
         exit(0);
     }
 
-    inputUpdatedDataToFile(semuaAkunPekerja);
+    inputUpdatedDataToFile(akunPekerja, semuaAkunPekerja);
 
 }
 
-void inputUpdatedDataToFile(struct structAkunPekerja * semuaAkunPekerja){
+void inputUpdatedDataToFile(struct structAkunPekerja * akunPekerja, struct structAkunPekerja * semuaAkunPekerja){
 
     int print_sekali = 0;
     int jumlahAkun = funcJumlahAkunPekerjaProfile();
@@ -229,7 +230,7 @@ void inputUpdatedDataToFile(struct structAkunPekerja * semuaAkunPekerja){
         }else{
             fputc('\n', bukaFilePekerja);
             if(print_sekali != 1){
-                printf("Berhasil mengupdate profile akun");
+                printf("Berhasil mengupdate profile akun anda");
                 print_sekali += 1;
             }
         }
@@ -238,9 +239,27 @@ void inputUpdatedDataToFile(struct structAkunPekerja * semuaAkunPekerja){
     fclose(bukaFilePekerja);
     bukaFilePekerja = NULL;
 
+    int setelah_update_profile;
+    printf("\n1. Kembali ke Menu Pekerja \t 2. Logout\n");
+    scanf("%d", &setelah_update_profile);
+    if(setelah_update_profile == 1){
+        system("cls");
+        main_menu_pekerja(akunPekerja);
+    }else if(setelah_update_profile == 2){
+        main();
+    }
+
 }
 
 void profile_akun_pekerja(struct structAkunPekerja * akunPekerja){
+
+    konversi_underscore_ke_spasi(akunPekerja->nama);
+    konversi_underscore_ke_spasi(akunPekerja->kewarganegaraan);
+    konversi_underscore_ke_spasi(akunPekerja->sd);
+    konversi_underscore_ke_spasi(akunPekerja->smp);
+    konversi_underscore_ke_spasi(akunPekerja->sma);
+    konversi_underscore_ke_spasi(akunPekerja->sarjana);
+    konversi_underscore_ke_spasi(akunPekerja->pengalaman_kerja);
 
     printf("Biodata Diri : \n");
     printf("Nama : %s\n", akunPekerja->nama);
@@ -273,9 +292,106 @@ void profile_akun_pekerja(struct structAkunPekerja * akunPekerja){
         gantiProfilePekerja(akunPekerja, &semuaAkunPekerja);
 
     }else if(menu_profile_akun_pekerja == 2){
-
+        ubah_password(akunPekerja);
     }else if(menu_profile_akun_pekerja == 3){
         system("cls");
         main_menu_pekerja(&akunPekerja);
     }
+}
+
+void inputUpdatedPasswordToFile(struct structAkunPekerja * semuaAkunPekerja){
+
+    int print_sekali = 0;
+    int jumlahAkun = funcJumlahAkunPekerjaProfile();
+    FILE * bukaFilePekerja = fopen("akun_pencarikerja.txt", "w+");
+    (bukaFilePekerja == NULL) ? exit(0) : NULL;
+
+    for(int i = 0; i < jumlahAkun; i++){
+
+        if((fprintf(bukaFilePekerja, "%s %s %s %s %s %s %s %s %s %s %s %s",
+        (semuaAkunPekerja+i)->username, (semuaAkunPekerja+i)->password, (semuaAkunPekerja+i)->nama,
+        (semuaAkunPekerja+i)->nomor_telepon, (semuaAkunPekerja+i)->tanggal_lahir, (semuaAkunPekerja+i)->kewarganegaraan
+        , (semuaAkunPekerja+i)->pref_gaji, (semuaAkunPekerja+i)->sd, (semuaAkunPekerja+i)->smp, (semuaAkunPekerja+i)->sma
+        , (semuaAkunPekerja+i)->sarjana, (semuaAkunPekerja+i)->pengalaman_kerja)) < 0){
+            printf("gagal mengupdate profile akun");
+            exit(0);
+        }else{
+            fputc('\n', bukaFilePekerja);
+            if(print_sekali != 1){
+                printf("Berhasil mengupdate Password akun Anda");
+                print_sekali += 1;
+            }
+        }
+    }
+
+    fclose(bukaFilePekerja);
+    bukaFilePekerja = NULL;
+
+    system("cls");
+    printf("\nSilahkan Login kembali menggunakan Password baru Anda");
+    main();
+
+}
+
+void func_ubah_password(struct structAkunPekerja * akunPekerja, struct structAkunPekerja * semuaAkunPekerja){
+
+    int jumlahAkun = funcJumlahAkunPekerjaProfile();
+    int i;
+
+    char current_password[50];
+    char new_password[50];
+    password_menu:
+    printf("Masukkan Password anda saat ini : ");
+    gets(current_password);
+
+    if( (strcmp( current_password, akunPekerja->password )) == 0 ){
+        password_menu_1:
+        printf("Masukkan Password Baru Anda : ");
+        gets(new_password);
+        if( (strcmp(new_password, current_password)) != 0 ){
+            strcpy(akunPekerja->password, new_password);
+        }else{
+            printf("Password baru yang anda masukkan sama dengan password lama Anda, Silahkan gunakan password Lain\n");
+            goto password_menu_1;
+        }
+    }else{
+        printf("Password yang anda masukkan salah,Silahkan masukkan kembali password Anda saat ini\n");
+        goto password_menu;
+    }
+
+    for( i = 0; i < jumlahAkun; i++){
+        if( strcmp( akunPekerja->username, (semuaAkunPekerja+i)->username ) == 0 ){
+            strcpy( (semuaAkunPekerja+i)->password, akunPekerja->password);
+            break;
+        }
+    }
+
+    if( i == jumlahAkun ){
+        printf("Error Terjadi\n");
+        exit(0);
+    }
+
+    inputUpdatedPasswordToFile(semuaAkunPekerja);
+
+}
+
+void ubah_password(struct structAkunPekerja * akunPekerja){
+
+    struct structAkunPekerja semuaAkunPekerja[funcJumlahAkunPekerjaProfile()];
+
+    retrieveSemuaDataPekerjaDiFile(&semuaAkunPekerja);
+
+    int peringatan_ubah_pw;
+    system("cls");
+    printf("\n==UBAH PASSWORD==\n\n");
+    printf("Peringatan, apakah anda benar ingin mengubah password ? (1.ya 2.tidak) : ");
+    scanf("%d", &peringatan_ubah_pw);
+    fflush(stdin);
+
+    if(peringatan_ubah_pw == 1){
+        func_ubah_password(akunPekerja, &semuaAkunPekerja);
+    }else if(peringatan_ubah_pw == 2){
+        main_menu_pekerja(akunPekerja);
+    }
+
 }
