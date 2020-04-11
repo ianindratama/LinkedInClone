@@ -1,1 +1,1 @@
-bankbca 123456 bank_bca_tbk bisnis jln_jakarta ac_dan_wifi
+bankbca qwerty bank_mandiri_tbk bisnis jln_jakarta ac_dan_wifi

@@ -14,12 +14,12 @@ int main(){
     printf("==CARI KERJA==\n");
     printf("1.Login 2.Register\n");
     printf("Pilih menu yang diinginkan : ");
-    menu = getchar();
+    scanf("%d", &menu);
 
     system("cls");
-    if(menu == '1'){
+    if(menu == 1){
         login_form();
-    }else if(menu == '2'){
+    }else if(menu == 2){
         register_form();
     }else{
         printf("Menu yang anda masukkan salah\n");

@@ -51,6 +51,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="profile_akun_pekerja.h" />
+		<Unit filename="profile_akun_perusahaan.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="profile_akun_perusahaan.h" />
 		<Unit filename="register.c">
 			<Option compilerVar="CC" />
 		</Unit>

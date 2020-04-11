@@ -40,6 +40,17 @@ void konversi_spasi_ke_underscore_profile(char * kata){
 
 }
 
+void konversi_underscore_ke_spasi_profile(char * kata){
+    int i = 0;
+    while( *(kata+i)!= '\0' ){
+        if( *(kata+i) == '_' ){
+            *(kata+i) = ' ';
+        }
+        i++;
+    }
+
+}
+
 void retrieveSemuaDataPekerjaDiFile(struct structAkunPekerja * semuaAkunPekerja){
 
     FILE * bukaFilePekerja = fopen("akun_pencarikerja.txt", "r");
@@ -253,13 +264,13 @@ void inputUpdatedDataToFile(struct structAkunPekerja * akunPekerja, struct struc
 
 void profile_akun_pekerja(struct structAkunPekerja * akunPekerja){
 
-    konversi_underscore_ke_spasi(akunPekerja->nama);
-    konversi_underscore_ke_spasi(akunPekerja->kewarganegaraan);
-    konversi_underscore_ke_spasi(akunPekerja->sd);
-    konversi_underscore_ke_spasi(akunPekerja->smp);
-    konversi_underscore_ke_spasi(akunPekerja->sma);
-    konversi_underscore_ke_spasi(akunPekerja->sarjana);
-    konversi_underscore_ke_spasi(akunPekerja->pengalaman_kerja);
+    konversi_underscore_ke_spasi_profile(akunPekerja->nama);
+    konversi_underscore_ke_spasi_profile(akunPekerja->kewarganegaraan);
+    konversi_underscore_ke_spasi_profile(akunPekerja->sd);
+    konversi_underscore_ke_spasi_profile(akunPekerja->smp);
+    konversi_underscore_ke_spasi_profile(akunPekerja->sma);
+    konversi_underscore_ke_spasi_profile(akunPekerja->sarjana);
+    konversi_underscore_ke_spasi_profile(akunPekerja->pengalaman_kerja);
 
     printf("Biodata Diri : \n");
     printf("Nama : %s\n", akunPekerja->nama);
@@ -328,7 +339,7 @@ void inputUpdatedPasswordToFile(struct structAkunPekerja * semuaAkunPekerja){
     bukaFilePekerja = NULL;
 
     system("cls");
-    printf("\nSilahkan Login kembali menggunakan Password baru Anda");
+    printf("\nSilahkan Login kembali menggunakan Password baru Anda\n");
     main();
 
 }
