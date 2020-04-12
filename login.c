@@ -19,6 +19,7 @@ int funcJumlahAkunPekerja(){
         bukaFilePekerja = NULL;
     return jumlah_akun_pekerja;
 }
+
 int funcJumlahAkunPerusahaan(){
     FILE * bukaFilePerusahaan = fopen("akun_perusahaan.txt", "r");
     (bukaFilePerusahaan == NULL) ? exit(0) : NULL;
@@ -135,8 +136,9 @@ void prosesLogin(char * username, char * password){
                         main_menu_pekerja(&akunPekerja);
                         break;
                     }else{
-                        printf("Password anda salah");
-                        exit(0);
+                        system("cls");
+                        printf("Password anda salah, silahkan coba lagi\n");
+                        login_form();
                         break;
                     }
                 }
@@ -149,8 +151,9 @@ void prosesLogin(char * username, char * password){
                         main_menu_perusahaan(&akunPerusahaan);
                         break;
                     }else{
-                        printf("Password anda salah");
-                        exit(0);
+                        system("cls");
+                        printf("Password anda salah, silahkan coba lagi\n");
+                        login_form();
                         break;
                     }
                 }
@@ -169,7 +172,6 @@ void login_form(){
     char username[100];
     char password[100];
 
-    getchar();
     printf("==Login==\n");
     printf("Username : ");
     gets(username);

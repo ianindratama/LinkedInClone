@@ -15,6 +15,7 @@ int main(){
     printf("1.Login 2.Register\n");
     printf("Pilih menu yang diinginkan : ");
     scanf("%d", &menu);
+    fflush(stdin);
 
     system("cls");
     if(menu == 1){

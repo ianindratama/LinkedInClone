@@ -39,6 +39,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="main.h" />
+		<Unit filename="main_list_kerja.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="main_list_kerja.h" />
 		<Unit filename="main_pekerja.c">
 			<Option compilerVar="CC" />
 		</Unit>

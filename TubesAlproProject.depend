@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1586357908 source:d:\koding\tutorial c\tubesalproproject\login.c
+1586664847 source:d:\koding\tutorial c\tubesalproproject\login.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -10,7 +10,7 @@
 
 1586323305 d:\koding\tutorial c\tubesalproproject\main_perusahaan.h
 
-1586626114 source:d:\koding\tutorial c\tubesalproproject\main.c
+1586661892 source:d:\koding\tutorial c\tubesalproproject\main.c
 	<stdio.h>
 	<stdlib.h>
 	"main.h"
@@ -30,11 +30,12 @@
 	"profile_akun_pekerja.h"
 	"main.h"
 
-1586614651 source:d:\koding\tutorial c\tubesalproproject\main_perusahaan.c
+1586662481 source:d:\koding\tutorial c\tubesalproproject\main_perusahaan.c
 	<stdio.h>
 	<stdlib.h>
 	"login.h"
 	"profile_akun_perusahaan.h"
+	"main_list_kerja.h"
 
 1586626229 source:d:\koding\tutorial c\tubesalproproject\profile_akun_pekerja.c
 	<stdio.h>
@@ -43,7 +44,7 @@
 	"main_pekerja.h"
 	"main.h"
 
-1586630874 source:d:\koding\tutorial c\tubesalproproject\register.c
+1586668408 source:d:\koding\tutorial c\tubesalproproject\register.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -61,4 +62,11 @@
 	<string.h>
 	"main_perusahaan.h"
 	"main.h"
+
+1586662468 d:\koding\tutorial c\tubesalproproject\main_list_kerja.h
+
+1586671739 source:d:\koding\tutorial c\tubesalproproject\main_list_kerja.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
 

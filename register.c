@@ -112,7 +112,6 @@ char *sd, char *smp, char *sma, char *sarjana, char *pengalaman_kerja){
         printf("terjadi kesalahan");
         exit(0);
     }else{
-        printf("\n\n%s", nama);
         if((fprintf(bukaFilePekerja, "%s %s %s %s %s %s %s %s %s %s %s %s",
         username, password, nama, tanggal_lahir, kewarganegaraan, nomor_telepon, pref_gaji, sd, smp, sma, sarjana, pengalaman_kerja)) < 0){
             printf("Ada kesalahan menulis data");

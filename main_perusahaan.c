@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "login.h"
 #include "profile_akun_perusahaan.h"
+#include "main_list_kerja.h"
 
 struct structAkunPerusahaan{
     char username[50]; char password[50];
@@ -21,7 +22,7 @@ void main_menu_perusahaan(struct structAkunPerusahaan * akunPerusahaan){
     if(menu_perusahaan == 1){
         profile_akun_perusahaan(akunPerusahaan);
     }else if(menu_perusahaan == 2){
-
+        menu_list_kerja(akunPerusahaan);
     }else if(menu_perusahaan == 3){
         fflush(stdin);
         system("cls");
