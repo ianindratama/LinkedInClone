@@ -31,6 +31,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="cari_kerja_pekerja.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="cari_kerja_pekerja.h" />
 		<Unit filename="login.c">
 			<Option compilerVar="CC" />
 		</Unit>

@@ -32,7 +32,7 @@ void konversi_underscore_ke_spasi_profile_perusahaan(char * kata){
 }
 
 int funcJumlahAkunPerusahaanProfile(){
-    FILE * bukaFilePerusahaan = fopen("akun_perusahaan.txt", "r");
+    FILE * bukaFilePerusahaan = fopen("akun_perusahaan.txt", "a+");
     (bukaFilePerusahaan == NULL) ? exit(0) : NULL;
     //menghitung jumlah akun di file perusahaan
         char cek_jumlah_akun_perusahaan;

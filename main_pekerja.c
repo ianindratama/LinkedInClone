@@ -3,6 +3,7 @@
 #include "login.h"
 #include "profile_akun_pekerja.h"
 #include "main.h"
+#include "cari_kerja_pekerja.h"
 
 struct structAkunPekerja{
     char username[50];char password[50];char nama[50];char tanggal_lahir[50];char kewarganegaraan[50];char pref_gaji[50];
@@ -22,7 +23,7 @@ void main_menu_pekerja(struct structAkunPekerja * akunPekerja){
     if(menu_pekerja == 1){
         profile_akun_pekerja(akunPekerja);
     }else if(menu_pekerja == 2){
-
+        tampilkan_semua_pekerjaan(akunPekerja);
     }else if(menu_pekerja == 3){
         fflush(stdin);
         system("cls");

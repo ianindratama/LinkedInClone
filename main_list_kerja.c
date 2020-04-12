@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "main_perusahaan.h"
 
 struct structAkunPerusahaan{
     char username[50]; char password[50];
@@ -153,10 +154,20 @@ void menu_list_kerja(struct structAkunPerusahaan * akunPerusahaan){
     }
 
     int pilihan_tambah_lowongan_pekerjaan;
-    printf("\n\n1. Tambah Lowongan Pekerjaan \t 2. Logout\n");
+    printf("\n\n1. Tambah Lowongan Pekerjaan \t 2. Kembali ke Menu Perusahaan \t 3. Logout\n");
     scanf("%d", &pilihan_tambah_lowongan_pekerjaan);
     fflush(stdin);
 
-    tambah_lowongan_pekerjaan(akunPerusahaan);
+    if(pilihan_tambah_lowongan_pekerjaan == 1){
+        tambah_lowongan_pekerjaan(akunPerusahaan);
+    }else if(pilihan_tambah_lowongan_pekerjaan == 2){
+        system("cls");
+        main_menu_perusahaan(akunPerusahaan);
+    }else if(pilihan_tambah_lowongan_pekerjaan == 3){
+        system("cls");
+        printf("Anda Berhasil Logout\n");
+        main();
+    }
+
 
 }
