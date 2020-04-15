@@ -6,9 +6,21 @@
 #include "main_list_kerja.h"
 #include "profile_akun_pekerja.h"
 
+struct structPekerjaPerusahaan{
+
+    char username_pekerja[50];char nama[50];char tanggal_lahir[50];char kewarganegaraan[50];
+    char nomor_telepon[25]; char pref_gaji[50];
+    char sd[50];char smp[50];char sma[50];char sarjana[50]; char pengalaman_kerja[50];
+
+    char username_perusahaan[50]; char namaPerusahaan[50]; char nama_pekerjaan[50];
+
+    char status[50]; char pesan[50];
+};
+
 struct structAkunPekerja{
-    char username[50];char password[50];char nama[50];char tanggal_lahir[50];char kewarganegaraan[50];char pref_gaji[50];
-    char sd[50];char smp[50];char sma[50];char sarjana[50];
+    char username[50];char password[50];char nama[50];char tanggal_lahir[50];char kewarganegaraan[50];
+    char nomor_telepon[25]; char pref_gaji[50];
+    char sd[50];char smp[50];char sma[50];char sarjana[50]; char pengalaman_kerja[50];
 };
 
 struct structLowonganKerja{
@@ -24,6 +36,8 @@ struct structCariKerjaList{
     char username[50];char namaPerusahaan[50]; char kategoriPerusahaan[50];char nama_pekerjaan[50];
     char deskripsi_pekerjaan[50]; char gaji_pekerjaan[50]; char jenis_pekerjaan[50]; char alamatPerusahaan[50]; char fasilitasPerusahaan[50];
 };
+
+void apply_pekerjaan(int * id_pilihan_pekerjaan, struct structCariKerjaList * semuaCariKerjaList, struct structAkunPekerja * akunPekerja);
 
 void retrieveSemuaGabunganDataKerjaListAkunPerusahaan(struct structAkunPerusahaan * semuaAkunPerusahaan,
                                                       struct structLowonganKerja * semuaListKerja,
@@ -60,11 +74,6 @@ void sortingSemuaGabunganDataKerjaListAkunPerusahaan(struct structCariKerjaList 
     char temp_username[50];char temp_namaPerusahaan[50]; char temp_kategoriPerusahaan[50];char temp_nama_pekerjaan[50];
     char temp_deskripsi_pekerjaan[50]; char temp_gaji_pekerjaan[50]; char temp_jenis_pekerjaan[50]; char temp_alamatPerusahaan[50];
     char temp_fasilitasPerusahaan[50];
-
-    printf("haii %s\n", (semuaCariKerjaList+0)->namaPerusahaan);
-    printf("haii %s\n", (semuaCariKerjaList+1)->namaPerusahaan);
-    printf("haii %s\n", (semuaCariKerjaList+2)->namaPerusahaan);
-    printf("haii %s\n", (semuaCariKerjaList+3)->namaPerusahaan);
 
 	for(i = 0; i<n-1; i++){
 		for(j = 0; j<n-1; j++){
@@ -148,6 +157,8 @@ void cari_pekerjaan_berdasarkan_nama(struct structAkunPekerja * akunPekerja,stru
     int i = 0; int counter = 0;
     int n = funcJumlahListKerja();
     int cek = 0;
+    int indeks_kerja[funcJumlahListKerja()];
+    indeks_kerja[0] = 0;
 
     while(i<=n-1){
 		if( (strcmp( (semuaCariKerjaList+i)->nama_pekerjaan, cari_nama_pekerjaan ) ) == 0 ){
@@ -171,6 +182,8 @@ void cari_pekerjaan_berdasarkan_nama(struct structAkunPekerja * akunPekerja,stru
             printf("    Fasilitas Perusahaan : %s\n",  (semuaCariKerjaList+i)->fasilitasPerusahaan);
             printf("    Alamat Perusahaan : %s\n",  (semuaCariKerjaList+i)->alamatPerusahaan);
 
+            indeks_kerja[counter] = i+1;
+
 		}else{
 			if( (i == n-1)  && (cek == 0)){
 				printf("\nData tidak ditemukan\n");
@@ -181,18 +194,18 @@ void cari_pekerjaan_berdasarkan_nama(struct structAkunPekerja * akunPekerja,stru
 
     int pilihan_menu_setelah_pencarian;
 
-    printf("\n1.Apply Pekerjaan Ini \t 2. Kembali ke Menu Pekerja \t 2. Logout\n");
+    printf("\n1.Apply Pekerjaan \t 2. Kembali ke Menu Pekerja\n");
     scanf("%d", &pilihan_menu_setelah_pencarian);
 
     if(pilihan_menu_setelah_pencarian == 1){
-
+            int id_pilihan_pekerjaan;
+            printf("Pilih Pekerjaan yang igin Anda Apply (ex:1) : ");
+            scanf("%d", &id_pilihan_pekerjaan);
+            fflush(stdin);
+            apply_pekerjaan(&indeks_kerja[id_pilihan_pekerjaan], semuaCariKerjaList, akunPekerja);
     }else if(pilihan_menu_setelah_pencarian == 2){
         system("cls");
         main_menu_pekerja(akunPekerja);
-    }else if(pilihan_menu_setelah_pencarian == 3){
-        system("cls");
-        printf("Berhasil Logout\n");
-        main();
     }
 
 }
@@ -206,6 +219,8 @@ void cari_pekerjaan_berdasarkan_perusahaan(struct structAkunPekerja * akunPekerj
     int i = 0; int counter = 0;
     int n = funcJumlahListKerja();
     int cek = 0;
+    int indeks_kerja[funcJumlahListKerja()];
+    indeks_kerja[0] = 0;
 
     while(i<=n-1){
 		if( (strcmp( (semuaCariKerjaList+i)->namaPerusahaan, cari_nama_perusahaan ) ) == 0 ){
@@ -229,6 +244,8 @@ void cari_pekerjaan_berdasarkan_perusahaan(struct structAkunPekerja * akunPekerj
             printf("    Fasilitas Perusahaan : %s\n",  (semuaCariKerjaList+i)->fasilitasPerusahaan);
             printf("    Alamat Perusahaan : %s\n",  (semuaCariKerjaList+i)->alamatPerusahaan);
 
+            indeks_kerja[counter] = i+1;
+
 		}else{
 			if( (i == n-1)  && (cek == 0)){
 				printf("\nData tidak ditemukan\n");
@@ -237,22 +254,88 @@ void cari_pekerjaan_berdasarkan_perusahaan(struct structAkunPekerja * akunPekerj
 		i++;
 	}
 
-    if(cek == 1){
-        int pilihan_menu_setelah_pencarian;
+    int pilihan_menu_setelah_pencarian;
 
-        printf("\n1.Apply Pekerjaan Ini \t 2. Kembali ke Menu Pekerja \t 2. Logout\n");
-        scanf("%d", &pilihan_menu_setelah_pencarian);
+    printf("\n1.Apply Pekerjaan \t 2. Kembali ke Menu Pekerja\n");
+    scanf("%d", &pilihan_menu_setelah_pencarian);
 
-        if(pilihan_menu_setelah_pencarian == 1){
+    if(pilihan_menu_setelah_pencarian == 1){
+            int id_pilihan_pekerjaan;
+            printf("Pilih Pekerjaan yang igin Anda Apply (ex:1) : ");
+            scanf("%d", &id_pilihan_pekerjaan);
+            fflush(stdin);
+            apply_pekerjaan(&indeks_kerja[id_pilihan_pekerjaan], semuaCariKerjaList, akunPekerja);
+    }else if(pilihan_menu_setelah_pencarian == 2){
+        system("cls");
+        main_menu_pekerja(akunPekerja);
+    }
 
-        }else if(pilihan_menu_setelah_pencarian == 2){
+}
+
+void apply_pekerjaan(int * id_pilihan_pekerjaan, struct structCariKerjaList * semuaCariKerjaList, struct structAkunPekerja * akunPekerja){
+
+    char nama_file[50];
+    strcpy(nama_file, (akunPekerja)->username);
+    strcat(nama_file, (semuaCariKerjaList+(*id_pilihan_pekerjaan-1))->username);
+    strcat(nama_file, ".txt");
+
+    FILE * bukaFile = fopen(nama_file, "a+");
+    (bukaFile == NULL) ? exit(0) : NULL;
+
+    konversi_spasi_ke_underscore_profile(akunPekerja->username);
+    konversi_spasi_ke_underscore_profile(akunPekerja->nama);
+    konversi_spasi_ke_underscore_profile(akunPekerja->tanggal_lahir);
+    konversi_spasi_ke_underscore_profile(akunPekerja->kewarganegaraan);
+    konversi_spasi_ke_underscore_profile(akunPekerja->nomor_telepon);
+    konversi_spasi_ke_underscore_profile(akunPekerja->pref_gaji);
+    konversi_spasi_ke_underscore_profile(akunPekerja->sd);
+    konversi_spasi_ke_underscore_profile(akunPekerja->smp);
+    konversi_spasi_ke_underscore_profile(akunPekerja->sma);
+    konversi_spasi_ke_underscore_profile(akunPekerja->sarjana);
+    konversi_spasi_ke_underscore_profile(akunPekerja->pengalaman_kerja);
+    konversi_spasi_ke_underscore_profile((semuaCariKerjaList+(*id_pilihan_pekerjaan-1))->username);
+    konversi_spasi_ke_underscore_profile((semuaCariKerjaList+(*id_pilihan_pekerjaan-1))->namaPerusahaan);
+    konversi_spasi_ke_underscore_profile((semuaCariKerjaList+(*id_pilihan_pekerjaan-1))->nama_pekerjaan);
+
+    char status[50] = "applied";
+    char pesan[50] = "-";
+
+    if( fprintf(bukaFile, "%s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s",
+                akunPekerja->username, akunPekerja->nama, akunPekerja->tanggal_lahir, akunPekerja->kewarganegaraan,
+                akunPekerja->nomor_telepon, akunPekerja->pref_gaji, akunPekerja->sd, akunPekerja->smp,
+                akunPekerja->sma, akunPekerja->sarjana, akunPekerja->pengalaman_kerja,
+                (semuaCariKerjaList+(*id_pilihan_pekerjaan-1))->username,
+                (semuaCariKerjaList+(*id_pilihan_pekerjaan-1))->namaPerusahaan,
+                (semuaCariKerjaList+(*id_pilihan_pekerjaan-1))->nama_pekerjaan,
+                status, pesan ) < 0 ){
+        printf("\nError terjadi");
+        exit(0);
+    }else{
+        fputc('\n', bukaFile);
+        fclose(bukaFile);
+        bukaFile = NULL;
+
+        konversi_underscore_ke_spasi_profile((semuaCariKerjaList+(*id_pilihan_pekerjaan-1))->namaPerusahaan);
+        konversi_underscore_ke_spasi_profile((semuaCariKerjaList+(*id_pilihan_pekerjaan-1))->nama_pekerjaan);
+
+        int pilih_pekerjaan_lagi;
+
+        printf("\nBerhasil mengApply Pekerjaan %s di %s\n\n", (semuaCariKerjaList+(*id_pilihan_pekerjaan-1))->nama_pekerjaan, (semuaCariKerjaList+(*id_pilihan_pekerjaan-1))->namaPerusahaan);
+        printf("1. Apply Pekerjaan Lagi \t 2. Kembali ke Menu Utama\n");
+        scanf("%d", &pilih_pekerjaan_lagi);
+        fflush(stdin);
+        if(pilih_pekerjaan_lagi == 1){
+            int id_pilihan_pekerjaan;
+            printf("Pilih Pekerjaan yang igin Anda Apply (ex:1) : ");
+            scanf("%d", &id_pilihan_pekerjaan);
+            fflush(stdin);
+            apply_pekerjaan(&id_pilihan_pekerjaan, semuaCariKerjaList, akunPekerja);
+
+        }else if(pilih_pekerjaan_lagi == 2){
             system("cls");
             main_menu_pekerja(akunPekerja);
-        }else if(pilihan_menu_setelah_pencarian == 3){
-            system("cls");
-            printf("Berhasil Logout\n");
-            main();
         }
+
     }
 
 }
@@ -274,7 +357,7 @@ void tampilkan_semua_pekerjaan(struct structAkunPekerja * akunPekerja){
     struct structCariKerjaList semuaCariKerjaList[funcJumlahListKerja()];
 
     int jumlah_lowongan_pekerjaan = funcJumlahListKerja();
-    int jumlah_akun_perusahaan = funcJumlahAkunPerusahaanProfile();
+    //int jumlah_akun_perusahaan = funcJumlahAkunPerusahaanProfile();
     int counter = 0;
 
     printf("\n\nList Lowongan Pekerjaan Perusahaan\n\n");
@@ -331,7 +414,11 @@ void tampilkan_semua_pekerjaan(struct structAkunPekerja * akunPekerja){
         fflush(stdin);
 
         if(menu_setelah_show_list_kerja == 1){
-
+            int id_pilihan_pekerjaan;
+            printf("Pilih Pekerjaan yang igin Anda Apply (ex:1) : ");
+            scanf("%d", &id_pilihan_pekerjaan);
+            fflush(stdin);
+            apply_pekerjaan(&id_pilihan_pekerjaan, &semuaCariKerjaList, akunPekerja);
         }else if(menu_setelah_show_list_kerja == 2){
             cari_pekerjaan_berdasarkan_nama(akunPekerja, &semuaCariKerjaList);
         }else if(menu_setelah_show_list_kerja == 3){

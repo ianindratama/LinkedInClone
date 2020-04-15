@@ -2,3 +2,6 @@ bankbca hrd_manager mengurus_departemen_hrd 10.000.000 penuh_waktu
 bankbca data_enginner mengurus_engginering 10.000.000 penuh_waktu
 telkom data_analyst analyse_data_ 15.000.000 penuh_waktu
 bankbca security menjaga_keamanan 3.000.000 penuh_waktu
+bankbca direktur_utama mengkoordinasi_semua_aktivitas_perusahaan 100.000.000 penuh_waktu
+bankbca web_developer mengatur_website_pt_telkom 10.000.000 penuh_waktu
+telkom web_developer bikin_website_duhh 10.000.000 penuh_waktu

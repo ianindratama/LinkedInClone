@@ -1,2 +1,3 @@
 bankbca 123456 bank_mandiri_tbk bisnis jln_jakarta ac_dan_wifi
 telkom 123456 pt_telkom teknologi jln_bandung ac_dan_wifi
+makmurjaya 123456 pt_makmur_jaya jasa jalan_buah_batu ac_dan_wifi

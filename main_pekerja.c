@@ -6,11 +6,14 @@
 #include "cari_kerja_pekerja.h"
 
 struct structAkunPekerja{
-    char username[50];char password[50];char nama[50];char tanggal_lahir[50];char kewarganegaraan[50];char pref_gaji[50];
-    char sd[50];char smp[50];char sma[50];char sarjana[50];
+    char username[50];char password[50];char nama[50];char tanggal_lahir[50];char kewarganegaraan[50];
+    char nomor_telepon[25]; char pref_gaji[50];
+    char sd[50];char smp[50];char sma[50];char sarjana[50]; char pengalaman_kerja[50];
 };
 
 void main_menu_pekerja(struct structAkunPekerja * akunPekerja){
+
+    konversi_underscore_ke_spasi_profile(akunPekerja->nama);
 
     int menu_pekerja;
 

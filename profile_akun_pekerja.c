@@ -306,7 +306,7 @@ void profile_akun_pekerja(struct structAkunPekerja * akunPekerja){
         ubah_password(akunPekerja);
     }else if(menu_profile_akun_pekerja == 3){
         system("cls");
-        main_menu_pekerja(&akunPekerja);
+        main_menu_pekerja(akunPekerja);
     }
 }
 
