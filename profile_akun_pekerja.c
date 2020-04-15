@@ -14,7 +14,7 @@ void inputUpdatedDataToStructSemuaPekerja(struct structAkunPekerja * akunPekerja
 void inputUpdatedDataToFile(struct structAkunPekerja * akunPekerja, struct structAkunPekerja * semuaAkunPekerja);
 
 int funcJumlahAkunPekerjaProfile(){
-    FILE * bukaFilePekerja = fopen("akun_pencarikerja.txt", "r");
+    FILE * bukaFilePekerja = fopen("akun_pencarikerja.txt", "a+");
     (bukaFilePekerja == NULL) ? exit(0) : NULL;
     //menghitung jumlah akun di file pekerja
         char cek_jumlah_akun_pekerja;

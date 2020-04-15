@@ -19,7 +19,7 @@ void main_menu_pekerja(struct structAkunPekerja * akunPekerja){
 
     printf("\nHai %s,", akunPekerja->nama);
     printf("\n\n");
-    printf("1. Lihat Profile Saya \t 2. Cari Pekerjaan \t 3. Logout\n");
+    printf("1. Lihat Profile Saya \t 2. Cari Pekerjaan \t 3. Cek Daftar Pekerjaan yang saya Applied \t 4. Logout\n");
     printf("Mau ngapain ? : ");
     scanf("%d", &menu_pekerja);
 
@@ -28,6 +28,8 @@ void main_menu_pekerja(struct structAkunPekerja * akunPekerja){
     }else if(menu_pekerja == 2){
         tampilkan_semua_pekerjaan(akunPekerja);
     }else if(menu_pekerja == 3){
+        cek_daftar_pekerjaan(akunPekerja);
+    }else if(menu_pekerja == 4){
         fflush(stdin);
         system("cls");
         printf("Berhasil Logout\n");

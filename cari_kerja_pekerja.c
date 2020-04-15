@@ -8,11 +8,13 @@
 
 struct structPekerjaPerusahaan{
 
-    char username_pekerja[50];char nama[50];char tanggal_lahir[50];char kewarganegaraan[50];
+    char username_pekerja[50]; char username_perusahaan[50];
+
+    char nama[50];char tanggal_lahir[50];char kewarganegaraan[50];
     char nomor_telepon[25]; char pref_gaji[50];
     char sd[50];char smp[50];char sma[50];char sarjana[50]; char pengalaman_kerja[50];
 
-    char username_perusahaan[50]; char namaPerusahaan[50]; char nama_pekerjaan[50];
+    char namaPerusahaan[50]; char nama_pekerjaan[50];
 
     char status[50]; char pesan[50];
 };
@@ -36,6 +38,22 @@ struct structCariKerjaList{
     char username[50];char namaPerusahaan[50]; char kategoriPerusahaan[50];char nama_pekerjaan[50];
     char deskripsi_pekerjaan[50]; char gaji_pekerjaan[50]; char jenis_pekerjaan[50]; char alamatPerusahaan[50]; char fasilitasPerusahaan[50];
 };
+
+int funcJumlahListKerjaApplied(){
+    FILE * bukaFile = fopen("list_kerja_apply.txt", "a+");
+    (bukaFile == NULL) ? exit(0) : NULL;
+    //menghitung jumlah lowongan kerja yang di applied user
+        char cek_jumlah_list_kerja_applied;
+        int jumlah_list_kerja_applied = 0;
+        while( (cek_jumlah_list_kerja_applied = fgetc(bukaFile)) != EOF ){
+            if(cek_jumlah_list_kerja_applied == '\n'){
+                jumlah_list_kerja_applied++;
+            }
+        }
+        fclose(bukaFile);
+        bukaFile = NULL;
+    return jumlah_list_kerja_applied;
+}
 
 void apply_pekerjaan(int * id_pilihan_pekerjaan, struct structCariKerjaList * semuaCariKerjaList, struct structAkunPekerja * akunPekerja);
 
@@ -274,15 +292,9 @@ void cari_pekerjaan_berdasarkan_perusahaan(struct structAkunPekerja * akunPekerj
 
 void apply_pekerjaan(int * id_pilihan_pekerjaan, struct structCariKerjaList * semuaCariKerjaList, struct structAkunPekerja * akunPekerja){
 
-    char nama_file[50];
-    strcpy(nama_file, (akunPekerja)->username);
-    strcat(nama_file, (semuaCariKerjaList+(*id_pilihan_pekerjaan-1))->username);
-    strcat(nama_file, ".txt");
-
-    FILE * bukaFile = fopen(nama_file, "a+");
+    FILE * bukaFile = fopen("list_kerja_apply.txt", "a+");
     (bukaFile == NULL) ? exit(0) : NULL;
 
-    konversi_spasi_ke_underscore_profile(akunPekerja->username);
     konversi_spasi_ke_underscore_profile(akunPekerja->nama);
     konversi_spasi_ke_underscore_profile(akunPekerja->tanggal_lahir);
     konversi_spasi_ke_underscore_profile(akunPekerja->kewarganegaraan);
@@ -293,18 +305,18 @@ void apply_pekerjaan(int * id_pilihan_pekerjaan, struct structCariKerjaList * se
     konversi_spasi_ke_underscore_profile(akunPekerja->sma);
     konversi_spasi_ke_underscore_profile(akunPekerja->sarjana);
     konversi_spasi_ke_underscore_profile(akunPekerja->pengalaman_kerja);
-    konversi_spasi_ke_underscore_profile((semuaCariKerjaList+(*id_pilihan_pekerjaan-1))->username);
     konversi_spasi_ke_underscore_profile((semuaCariKerjaList+(*id_pilihan_pekerjaan-1))->namaPerusahaan);
     konversi_spasi_ke_underscore_profile((semuaCariKerjaList+(*id_pilihan_pekerjaan-1))->nama_pekerjaan);
 
     char status[50] = "applied";
-    char pesan[50] = "-";
+    char pesan[50] = "belum ada pesan";
+    konversi_spasi_ke_underscore_profile(pesan);
 
     if( fprintf(bukaFile, "%s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s",
-                akunPekerja->username, akunPekerja->nama, akunPekerja->tanggal_lahir, akunPekerja->kewarganegaraan,
+                akunPekerja->username, akunPekerja->nama, (semuaCariKerjaList+(*id_pilihan_pekerjaan-1))->username,
+                akunPekerja->tanggal_lahir, akunPekerja->kewarganegaraan,
                 akunPekerja->nomor_telepon, akunPekerja->pref_gaji, akunPekerja->sd, akunPekerja->smp,
                 akunPekerja->sma, akunPekerja->sarjana, akunPekerja->pengalaman_kerja,
-                (semuaCariKerjaList+(*id_pilihan_pekerjaan-1))->username,
                 (semuaCariKerjaList+(*id_pilihan_pekerjaan-1))->namaPerusahaan,
                 (semuaCariKerjaList+(*id_pilihan_pekerjaan-1))->nama_pekerjaan,
                 status, pesan ) < 0 ){
@@ -337,6 +349,108 @@ void apply_pekerjaan(int * id_pilihan_pekerjaan, struct structCariKerjaList * se
         }
 
     }
+
+}
+
+void retrieveDataPekerjaanApplied(struct structPekerjaPerusahaan * semuaPekerjaanApplied){
+
+    FILE * bukaFile = fopen("list_kerja_apply.txt", "a+");
+    (bukaFile == NULL) ? exit(0) : NULL;
+
+    for(int i = 0; i<funcJumlahListKerjaApplied(); i++){
+        if( fscanf(bukaFile, "%s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s",
+                   (semuaPekerjaanApplied+i)->username_pekerja,
+                   (semuaPekerjaanApplied+i)->username_perusahaan,
+                   (semuaPekerjaanApplied+i)->nama,
+                   (semuaPekerjaanApplied+i)->tanggal_lahir,
+                   (semuaPekerjaanApplied+i)->kewarganegaraan,
+                   (semuaPekerjaanApplied+i)->nomor_telepon,
+                   (semuaPekerjaanApplied+i)->pref_gaji,
+                   (semuaPekerjaanApplied+i)->sd,
+                   (semuaPekerjaanApplied+i)->smp,
+                   (semuaPekerjaanApplied+i)->sma,
+                   (semuaPekerjaanApplied+i)->sarjana,
+                   (semuaPekerjaanApplied+i)->pengalaman_kerja,
+                   (semuaPekerjaanApplied+i)->namaPerusahaan,
+                   (semuaPekerjaanApplied+i)->nama_pekerjaan,
+                   (semuaPekerjaanApplied+i)->status,
+                   (semuaPekerjaanApplied+i)->pesan
+                   ) < 0 ){
+            printf("\nError terjadi");
+            exit(0);
+        }
+    }
+
+    fclose(bukaFile);
+    bukaFile = NULL;
+
+}
+
+void cek_daftar_pekerjaan(struct structAkunPekerja * akunPekerja){
+
+    int jumlah_pekerjaan_applied_user = 0;
+    int cek = 0; int x = -1;
+    int jumlah_list_kerja_applied = funcJumlahListKerjaApplied();
+
+    //retrive data
+    struct structPekerjaPerusahaan semuaPekerjaanApplied[jumlah_list_kerja_applied];
+    retrieveDataPekerjaanApplied(&semuaPekerjaanApplied);
+
+    //sortir data
+    struct structPekerjaPerusahaan pekerjaanApplied[jumlah_list_kerja_applied];
+    for(int i = 0; i<jumlah_list_kerja_applied; i++){
+        if( (strcmp(akunPekerja->username, semuaPekerjaanApplied[i].username_pekerja)) == 0 ){
+
+            cek = 1;
+            jumlah_pekerjaan_applied_user += 1; x+=1;
+
+            strcpy(pekerjaanApplied[x].username_pekerja, semuaPekerjaanApplied[i].username_pekerja);
+            strcpy(pekerjaanApplied[x].username_perusahaan, semuaPekerjaanApplied[i].username_perusahaan);
+            strcpy(pekerjaanApplied[x].nama, semuaPekerjaanApplied[i].nama);
+            strcpy(pekerjaanApplied[x].tanggal_lahir, semuaPekerjaanApplied[i].tanggal_lahir);
+            strcpy(pekerjaanApplied[x].kewarganegaraan, semuaPekerjaanApplied[i].kewarganegaraan);
+            strcpy(pekerjaanApplied[x].nomor_telepon, semuaPekerjaanApplied[i].nomor_telepon);
+            strcpy(pekerjaanApplied[x].pref_gaji, semuaPekerjaanApplied[i].pref_gaji);
+            strcpy(pekerjaanApplied[x].sd , semuaPekerjaanApplied[i].sd);
+            strcpy(pekerjaanApplied[x].smp , semuaPekerjaanApplied[i].smp);
+            strcpy(pekerjaanApplied[x].sma , semuaPekerjaanApplied[i].sma);
+            strcpy(pekerjaanApplied[x].sarjana , semuaPekerjaanApplied[i].sarjana);
+            strcpy(pekerjaanApplied[x].pengalaman_kerja , semuaPekerjaanApplied[i].pengalaman_kerja);
+            strcpy(pekerjaanApplied[x].namaPerusahaan , semuaPekerjaanApplied[i].namaPerusahaan);
+            strcpy(pekerjaanApplied[x].nama_pekerjaan , semuaPekerjaanApplied[i].nama_pekerjaan);
+            strcpy(pekerjaanApplied[x].status , semuaPekerjaanApplied[i].status);
+            strcpy(pekerjaanApplied[x].pesan , semuaPekerjaanApplied[i].pesan);
+
+        }
+    }
+    if(cek == 1){
+        printf("\n\t\t\t==Pekerjaan yang Anda Applied==\n\n");
+        printf(" No Nama Pekerjaan\tNama Perusahaan\t\tStatus\t\tPesan\n");
+        for(int i = 0; i<jumlah_pekerjaan_applied_user; i++){
+
+            konversi_underscore_ke_spasi_profile(pekerjaanApplied[i].nama_pekerjaan);
+            konversi_underscore_ke_spasi_profile(pekerjaanApplied[i].namaPerusahaan);
+            konversi_underscore_ke_spasi_profile(pekerjaanApplied[i].status);
+            konversi_underscore_ke_spasi_profile(pekerjaanApplied[i].pesan);
+
+            printf("%2d  %-20s%-20s\t%s\t\t%s\n", i+1, pekerjaanApplied[i].nama_pekerjaan, pekerjaanApplied[i].namaPerusahaan,
+                                            pekerjaanApplied[i].status, pekerjaanApplied[i].pesan);
+        }
+    }else{
+        printf("\nMaaf Anda belum pernah Apply Pekerjaan");
+    }
+
+    int menu_setelah_lihat_daftar;
+    printf("\n1. Kembali ke menu utama \t 2. Logout\n");
+    scanf("%d", &menu_setelah_lihat_daftar);
+    getchar();
+    system("cls");
+    if(menu_setelah_lihat_daftar == 1){
+        main_menu_pekerja(akunPekerja);
+    }else{
+        main();
+    }
+
 
 }
 
