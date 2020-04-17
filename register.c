@@ -78,7 +78,7 @@ void register_pencari_kerja(){
         goto menu_username_sesuai_kriteria_pekerja;
     }
 
-    while( (strlen(username) <= 6) || (strlen(username) >= 20) ){
+    while( (strlen(username) < 6) || (strlen(username) > 20) ){
         printf("Username yang didaftarkan harus terdiri dari 6 - 20 karakter, silahkan gunakan username yang sesuai dengan kriteria tersebut\n");
         goto menu_username_sesuai_kriteria_pekerja;
     }
@@ -103,7 +103,7 @@ void register_pencari_kerja(){
         goto menu_password_sesuai_kriteria_pekerja;
     }
 
-    while( (strlen(password) <= 6) || (strlen(password) >= 30) ){
+    while( (strlen(password) < 6) || (strlen(password) > 30) ){
         printf("Password yang didaftarkan harus terdiri dari 6 - 30 karakter, silahkan gunakan Password yang sesuai dengan kriteria tersebut\n");
         goto menu_password_sesuai_kriteria_pekerja;
     }
@@ -202,7 +202,7 @@ void register_perusahaan(){
         goto menu_username_sesuai_kriteria_perusahaan;
     }
 
-    while( (strlen(username) <= 6) || (strlen(username) >= 20) ){
+    while( (strlen(username) < 6) || (strlen(username) > 20) ){
         printf("Username yang didaftarkan harus terdiri dari 6 - 20 karakter, silahkan gunakan username yang sesuai dengan kriteria tersebut\n");
         goto menu_username_sesuai_kriteria_perusahaan;
     }
@@ -227,7 +227,7 @@ void register_perusahaan(){
         goto menu_password_sesuai_kriteria_perusahaan;
     }
 
-    while( (strlen(password) <= 6) || (strlen(password) >= 30) ){
+    while( (strlen(password) < 6) || (strlen(password) > 30) ){
         printf("Password yang didaftarkan harus terdiri dari 6 - 30 karakter, silahkan gunakan Password yang sesuai dengan kriteria tersebut\n");
         goto menu_password_sesuai_kriteria_perusahaan;
     }

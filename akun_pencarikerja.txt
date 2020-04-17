@@ -1,1 +1,2 @@
 ianindratama 123456 Indratama_Pangasian_Manalu 18/06/01 Indonesia 082189968487 30.000.000 SD_Harapan_Bunda SMPK_Soverdi SMK_TI_Bali_Global_Jimbaran S1_Teknik_Komputer_Telkom_University -
+pandu1 123456 pandu_adhi 11/01/01 indonesia 0821 30.000.000 sd_asiap smp_telkom smk_telkom s1_tekkom -

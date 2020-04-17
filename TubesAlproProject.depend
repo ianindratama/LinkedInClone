@@ -1,8 +1,9 @@
 # depslib dependency file v1.0
-1587121657 source:d:\koding\tutorial c\tubesalproproject\login.c
+1587131682 source:d:\koding\tutorial c\tubesalproproject\login.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
+	"main.h"
 	"main_pekerja.h"
 	"main_perusahaan.h"
 
@@ -46,7 +47,7 @@
 	"main_pekerja.h"
 	"main.h"
 
-1587129511 source:d:\koding\tutorial c\tubesalproproject\register.c
+1587135552 source:d:\koding\tutorial c\tubesalproproject\register.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
