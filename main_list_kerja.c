@@ -529,7 +529,7 @@ void menu_list_kerja(struct structAkunPerusahaan * akunPerusahaan){
         int counter = 0;
 
         printf("\n\nList Lowongan Pekerjaan Perusahaan\n\n");
-        printf("Nama Pekerjaan\t\tDeskripsi Pekerjaan\t\tGaji Pekerjaan\t\tJenis Pekerjaan\n");
+        printf("Nama Pekerjaan\t\tDeskripsi Pekerjaan\t\t\t\tGaji Pekerjaan\t\tJenis Pekerjaan\n");
 
         for(int i = 0; i<jumlah_list_kerja_perusahaan; i++){
             if( strcmp(akunPerusahaan->username, semuaListKerja[i].username ) == 0 ){
@@ -541,10 +541,10 @@ void menu_list_kerja(struct structAkunPerusahaan * akunPerusahaan){
                 konversi_underscore_ke_spasi_ListKerja(semuaListKerja[i].gaji_pekerjaan);
                 konversi_underscore_ke_spasi_ListKerja(semuaListKerja[i].jenis_pekerjaan);
 
-                printf("%d.%s\t\t", counter, semuaListKerja[i].nama_pekerjaan);
-                printf("%s\t\t", semuaListKerja[i].deskripsi_pekerjaan);
+                printf("%d.%-20s\t", counter, semuaListKerja[i].nama_pekerjaan);
+                printf("%-50s", semuaListKerja[i].deskripsi_pekerjaan);
                 printf("%s\t\t", semuaListKerja[i].gaji_pekerjaan);
-                printf("%s\t", semuaListKerja[i].jenis_pekerjaan);
+                printf(" %s\t", semuaListKerja[i].jenis_pekerjaan);
                 printf("\n");
             }
         }

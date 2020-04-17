@@ -2,14 +2,33 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="cari_kerja_pekerja.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="main_pekerja.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="181" topLine="0" />
+			<Cursor1 position="68" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="main_perusahaan.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="74" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="profile_akun_perusahaan.c" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="11560" topLine="308" />
+		</Cursor>
+	</File>
+	<File name="register.c" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="8813" topLine="200" />
+		</Cursor>
+		<Folding>
+			<Collapse line="7" />
+			<Collapse line="13" />
+		</Folding>
+	</File>
+	<File name="main_list_kerja.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="371" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="cari_kerja_pekerja.c" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -27,9 +46,14 @@
 			<Collapse line="86" />
 		</Folding>
 	</File>
-	<File name="profile_akun_pekerja.c" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="cari_kerja_pekerja.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="723" topLine="0" />
+			<Cursor1 position="181" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="login.c" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="6478" topLine="162" />
 		</Cursor>
 	</File>
 	<File name="main.c" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -37,14 +61,14 @@
 			<Cursor1 position="471" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="main.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="main_perusahaan.c" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="94" topLine="0" />
+			<Cursor1 position="1153" topLine="16" />
 		</Cursor>
 	</File>
 	<File name="main_list_kerja.c" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="28007" topLine="187" />
+			<Cursor1 position="26815" topLine="462" />
 		</Cursor>
 		<Folding>
 			<Collapse line="6" />
@@ -56,38 +80,9 @@
 			<Collapse line="69" />
 		</Folding>
 	</File>
-	<File name="main_perusahaan.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="74" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="login.c" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="6700" topLine="160" />
-		</Cursor>
-	</File>
-	<File name="register.c" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="8813" topLine="188" />
-		</Cursor>
-		<Folding>
-			<Collapse line="7" />
-			<Collapse line="13" />
-		</Folding>
-	</File>
-	<File name="profile_akun_perusahaan.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="338" topLine="0" />
-		</Cursor>
-	</File>
 	<File name="profile_akun_pekerja.h" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="198" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="main_pekerja.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="68" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="main_pekerja.c" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -95,14 +90,19 @@
 			<Cursor1 position="1089" topLine="16" />
 		</Cursor>
 	</File>
-	<File name="main_perusahaan.c" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="profile_akun_perusahaan.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1153" topLine="16" />
+			<Cursor1 position="338" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="main_list_kerja.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="main.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="371" topLine="0" />
+			<Cursor1 position="94" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="profile_akun_pekerja.c" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="8612" topLine="234" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

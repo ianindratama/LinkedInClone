@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "main.h"
 #include "main_pekerja.h"
 #include "main_perusahaan.h"
 
@@ -160,8 +161,9 @@ void prosesLogin(char * username, char * password){
             }
         }
         if(i == jumlah_akun){
-            printf("\nAkun anda tidak terdaftar, silahkan mendaftar terlebih dahulu");
-            exit(0);
+            system("cls");
+            printf("\nAkun anda tidak terdaftar, silahkan mendaftar terlebih dahulu\n");
+            main();
         }
 
     }
