@@ -22,6 +22,8 @@ void main_menu_pekerja(struct structAkunPekerja * akunPekerja){
     printf("1. Lihat Profile Saya \t 2. Cari Pekerjaan \t 3. Cek Daftar Pekerjaan yang saya Applied \t 4. Logout\n");
     printf("Mau ngapain ? : ");
     scanf("%d", &menu_pekerja);
+    fflush(stdin);
+    printf("\n");
 
     if(menu_pekerja == 1){
         profile_akun_pekerja(akunPekerja);

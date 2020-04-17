@@ -36,7 +36,7 @@ void konversi_spasi_ke_underscore(char * kata){
 
 void register_pencari_kerja(){
 
-    int jumlah_akun_pekerja = funcJumlahAkunPekerja();
+    int jumlah_akun_pekerja = funcJumlahAkunPekerjaProfile();
 
     struct structAkunPekerja semuaAkunPekerja[funcJumlahAkunPekerjaProfile()];
 
@@ -121,7 +121,7 @@ char *sd, char *smp, char *sma, char *sarjana, char *pengalaman_kerja){
             fclose(bukaFilePekerja);
             bukaFilePekerja = NULL;
             system("cls");
-            printf("Berhasil Register sebagai pencari kerja\n\n");
+            printf("Berhasil Register sebagai pencari kerja, Silahkan Login terlebih dahulu\n\n");
             main();
         }
     }
@@ -129,9 +129,9 @@ char *sd, char *smp, char *sma, char *sarjana, char *pengalaman_kerja){
 
 void register_perusahaan(){
 
-    int jumlah_akun_perusahaan = funcJumlahAkunPerusahaan();
+    int jumlah_akun_perusahaan = funcJumlahAkunPerusahaanProfile();
 
-    struct structAkunPerusahaan semuaAkunPerusahaan[funcJumlahAkunPerusahaan()];
+    struct structAkunPerusahaan semuaAkunPerusahaan[funcJumlahAkunPerusahaanProfile()];
 
     retrieveSemuaDataPerusahaanDiFile(&semuaAkunPerusahaan);
 

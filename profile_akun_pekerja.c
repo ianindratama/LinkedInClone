@@ -12,6 +12,7 @@ struct structAkunPekerja{
 
 void inputUpdatedDataToStructSemuaPekerja(struct structAkunPekerja * akunPekerja, struct structAkunPekerja * semuaAkunPekerja);
 void inputUpdatedDataToFile(struct structAkunPekerja * akunPekerja, struct structAkunPekerja * semuaAkunPekerja);
+void ubah_password(struct structAkunPekerja * akunPekerja);
 
 int funcJumlahAkunPekerjaProfile(){
     FILE * bukaFilePekerja = fopen("akun_pencarikerja.txt", "a+");

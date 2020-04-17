@@ -276,7 +276,7 @@ void gantiProfilePerusahaan(struct structAkunPerusahaan * akunPerusahaan, struct
         }
         strcpy(buffer, "");
     }
-    konversi_spasi_ke_underscore_profile(akunPerusahaan->alamatPerusahaan);
+    konversi_spasi_ke_underscore_profile_perusahaan(akunPerusahaan->alamatPerusahaan);
 
     //fasilitasPerusahaan
     printf("Fasilitas Perusahaan : ");
@@ -288,7 +288,7 @@ void gantiProfilePerusahaan(struct structAkunPerusahaan * akunPerusahaan, struct
         }
         strcpy(buffer, "");
     }
-    konversi_spasi_ke_underscore_profile(akunPerusahaan->fasilitasPerusahaan);
+    konversi_spasi_ke_underscore_profile_perusahaan(akunPerusahaan->fasilitasPerusahaan);
 
     inputUpdatedDataToStructSemuaPerusahaan(akunPerusahaan, semuaAkunPerusahaan);
 

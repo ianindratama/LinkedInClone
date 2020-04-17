@@ -5,6 +5,7 @@
 #include "main_pekerja.h"
 #include "main_list_kerja.h"
 #include "profile_akun_pekerja.h"
+#include "profile_akun_perusahaan.h"
 
 struct structPekerjaPerusahaan{
 
@@ -63,7 +64,6 @@ void retrieveSemuaGabunganDataKerjaListAkunPerusahaan(struct structAkunPerusahaa
 
     int jumlah_lowongan_pekerjaan = funcJumlahListKerja();
     int jumlah_akun_perusahaan = funcJumlahAkunPerusahaanProfile();
-    int counter = 0;
 
     for(int i = 0; i<jumlah_akun_perusahaan; i++){
         for(int j = 0; j<jumlah_lowongan_pekerjaan; j++){
@@ -313,7 +313,7 @@ void apply_pekerjaan(int * id_pilihan_pekerjaan, struct structCariKerjaList * se
     konversi_spasi_ke_underscore_profile(pesan);
 
     if( fprintf(bukaFile, "%s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s",
-                akunPekerja->username, akunPekerja->nama, (semuaCariKerjaList+(*id_pilihan_pekerjaan-1))->username,
+                akunPekerja->username, (semuaCariKerjaList+(*id_pilihan_pekerjaan-1))->username, akunPekerja->nama,
                 akunPekerja->tanggal_lahir, akunPekerja->kewarganegaraan,
                 akunPekerja->nomor_telepon, akunPekerja->pref_gaji, akunPekerja->sd, akunPekerja->smp,
                 akunPekerja->sma, akunPekerja->sarjana, akunPekerja->pengalaman_kerja,
@@ -398,6 +398,7 @@ void cek_daftar_pekerjaan(struct structAkunPekerja * akunPekerja){
 
     //sortir data
     struct structPekerjaPerusahaan pekerjaanApplied[jumlah_list_kerja_applied];
+
     for(int i = 0; i<jumlah_list_kerja_applied; i++){
         if( (strcmp(akunPekerja->username, semuaPekerjaanApplied[i].username_pekerja)) == 0 ){
 
@@ -433,11 +434,11 @@ void cek_daftar_pekerjaan(struct structAkunPekerja * akunPekerja){
             konversi_underscore_ke_spasi_profile(pekerjaanApplied[i].status);
             konversi_underscore_ke_spasi_profile(pekerjaanApplied[i].pesan);
 
-            printf("%2d  %-20s%-20s\t%s\t\t%s\n", i+1, pekerjaanApplied[i].nama_pekerjaan, pekerjaanApplied[i].namaPerusahaan,
+            printf("%2d  %-20s%-20s\t%-8s\t%s\n", i+1, pekerjaanApplied[i].nama_pekerjaan, pekerjaanApplied[i].namaPerusahaan,
                                             pekerjaanApplied[i].status, pekerjaanApplied[i].pesan);
         }
     }else{
-        printf("\nMaaf Anda belum pernah Apply Pekerjaan");
+        printf("\nMaaf Anda belum pernah Apply Pekerjaan\n");
     }
 
     int menu_setelah_lihat_daftar;

@@ -1,4 +1,1 @@
-y y x x x x x x x x x bekerja_di_google
-ian 123456 Indratama_Pangasian_Manalu Indonesia 082189968487 18/06/01 30.000.000 sd_harapan_bunda smpk_soverdi smk_ti s1_tekkom bekerja_di_google
-sea 123456 Sea_Lab 20/02/20 Indonesia 082123456789 10.000.000 SD_telkom smp_telkom sma_telkom s1_tekkom_univ_telkom -
-sealab 123456 Sea_Lab_Indratama 18/06/20 Indonesia 0821123456789 10.000.000 SD_telkom SMPK_telkom SMA_Telkom s1_tekkom_univ_telkom -
+ianindratama 123456 Indratama_Pangasian_Manalu 18/06/01 Indonesia 082189968487 30.000.000 SD_Harapan_Bunda SMPK_Soverdi SMK_TI_Bali_Global_Jimbaran S1_Teknik_Komputer_Telkom_University -

@@ -4,6 +4,8 @@
 #include "main_pekerja.h"
 #include "main_perusahaan.h"
 
+void login_form();
+
 int funcJumlahAkunPekerja(){
     FILE * bukaFilePekerja = fopen("akun_pencarikerja.txt", "r");
     (bukaFilePekerja == NULL) ? exit(0) : NULL;
