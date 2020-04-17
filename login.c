@@ -133,7 +133,6 @@ void prosesLogin(char * username, char * password){
                 retrieveDataPekerja(&akunPekerja, &current_position_filePekerja);
                 if( strcmp(username, akunPekerja.username) == 0 ){
                     if( strcmp(password, akunPekerja.password) == 0 ){
-                        printf("\nBerhasil masuk");
                         system("cls");
                         main_menu_pekerja(&akunPekerja);
                         break;
@@ -148,7 +147,6 @@ void prosesLogin(char * username, char * password){
                 retrieveDataPerusahaan(&akunPerusahaan, &current_position_fiePerusahaan);
                 if( strcmp(username, akunPerusahaan.username) == 0 ){
                     if( strcmp(password, akunPerusahaan.password) == 0 ){
-                        printf("\nBerhasil masuk");
                         system("cls");
                         main_menu_perusahaan(&akunPerusahaan);
                         break;
@@ -173,12 +171,14 @@ void login_form(){
 
     char username[100];
     char password[100];
+    char pass_temp;
 
     printf("==Login==\n");
     printf("Username : ");
     gets(username);
     printf("Password : ");
     gets(password);
+
     prosesLogin(username, password);
 
 }

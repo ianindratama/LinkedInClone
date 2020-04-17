@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1587031342 source:d:\koding\tutorial c\tubesalproproject\login.c
+1587121657 source:d:\koding\tutorial c\tubesalproproject\login.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -46,7 +46,7 @@
 	"main_pekerja.h"
 	"main.h"
 
-1587032051 source:d:\koding\tutorial c\tubesalproproject\register.c
+1587129511 source:d:\koding\tutorial c\tubesalproproject\register.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -67,7 +67,7 @@
 
 1587111842 d:\koding\tutorial c\tubesalproproject\main_list_kerja.h
 
-1587114428 source:d:\koding\tutorial c\tubesalproproject\main_list_kerja.c
+1587119103 source:d:\koding\tutorial c\tubesalproproject\main_list_kerja.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

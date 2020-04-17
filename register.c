@@ -34,6 +34,21 @@ void konversi_spasi_ke_underscore(char * kata){
 
 }
 
+void cek_spasi(int * ada_spasi, char * kata){
+
+    int i = 0;
+    while( *(kata+i)!= '\0' ){
+        if( *(kata+i) == ' ' ){
+            *ada_spasi = 1;
+            break;
+        }else{
+            *ada_spasi = 0;
+        }
+        i++;
+    }
+
+}
+
 void register_pencari_kerja(){
 
     int jumlah_akun_pekerja = funcJumlahAkunPekerjaProfile();
@@ -49,19 +64,51 @@ void register_pencari_kerja(){
     fflush(stdin);
     printf("Anda mendaftar sebagai Pencari Kerja\n");
     printf("Silahkan mengisi data dibawah ini!\n");
+
+    int ada_spasi_username_pekerja = 0;
+
+    menu_username_sesuai_kriteria_pekerja:
     printf("Username : ");
     gets(username);
+
+    cek_spasi(&ada_spasi_username_pekerja, username);
+
+    while( ada_spasi_username_pekerja == 1 ){
+        printf("Username yang didaftarkan tidak boleh terdiri dari karakter spasi, silahkan gunakan username yang sesuai dengan kriteria tersebut\n");
+        goto menu_username_sesuai_kriteria_pekerja;
+    }
+
+    while( (strlen(username) <= 6) || (strlen(username) >= 20) ){
+        printf("Username yang didaftarkan harus terdiri dari 6 - 20 karakter, silahkan gunakan username yang sesuai dengan kriteria tersebut\n");
+        goto menu_username_sesuai_kriteria_pekerja;
+    }
 
     for(int i = 0; i<jumlah_akun_pekerja; i++){
         while( (strcmp(username, (semuaAkunPekerja+i)->username)) == 0 ){
             printf("Username yang anda masukkan sudah terdaftar, silahkan gunakan yang lain\n");
-            printf("Username : ");
-            gets(username);
+            goto menu_username_sesuai_kriteria_pekerja;
         }
     }
 
+    int ada_spasi_password_pekerja = 0;
+
+    menu_password_sesuai_kriteria_pekerja:
     printf("Password : ");
     gets(password);
+
+    cek_spasi(&ada_spasi_password_pekerja, password);
+
+    while( ada_spasi_password_pekerja == 1 ){
+        printf("Password yang didaftarkan tidak boleh terdiri dari karakter spasi, silahkan gunakan password yang sesuai dengan kriteria tersebut\n");
+        goto menu_password_sesuai_kriteria_pekerja;
+    }
+
+    while( (strlen(password) <= 6) || (strlen(password) >= 30) ){
+        printf("Password yang didaftarkan harus terdiri dari 6 - 30 karakter, silahkan gunakan Password yang sesuai dengan kriteria tersebut\n");
+        goto menu_password_sesuai_kriteria_pekerja;
+    }
+
+
     printf("Nama : ");
     gets(nama);
     konversi_spasi_ke_underscore(nama);
@@ -141,19 +188,50 @@ void register_perusahaan(){
     fflush(stdin);
     printf("Anda mendaftar sebagai Perusahaan\n");
     printf("Silahkan mengisi data dibawah ini!\n");
+
+    int ada_spasi_username_perusahaan = 0;
+
+    menu_username_sesuai_kriteria_perusahaan:
     printf("Username : ");
     gets(username);
+
+    cek_spasi(&ada_spasi_username_perusahaan, username);
+
+    while( ada_spasi_username_perusahaan == 1 ){
+        printf("Username yang didaftarkan tidak boleh terdiri dari karakter spasi, silahkan gunakan username yang sesuai dengan kriteria tersebut\n");
+        goto menu_username_sesuai_kriteria_perusahaan;
+    }
+
+    while( (strlen(username) <= 6) || (strlen(username) >= 20) ){
+        printf("Username yang didaftarkan harus terdiri dari 6 - 20 karakter, silahkan gunakan username yang sesuai dengan kriteria tersebut\n");
+        goto menu_username_sesuai_kriteria_perusahaan;
+    }
 
     for(int i = 0; i<jumlah_akun_perusahaan; i++){
         while( (strcmp(username, (semuaAkunPerusahaan+i)->username)) == 0 ){
             printf("Username yang anda masukkan sudah terdaftar, silahkan gunakan yang lain\n");
-            printf("Username : ");
-            gets(username);
+            goto menu_username_sesuai_kriteria_perusahaan;
         }
     }
 
+    int ada_spasi_password_perusahaan = 0;
+
+    menu_password_sesuai_kriteria_perusahaan:
     printf("Password : ");
     gets(password);
+
+    cek_spasi(&ada_spasi_password_perusahaan, password);
+
+    while( ada_spasi_password_perusahaan == 1 ){
+        printf("Password yang didaftarkan tidak boleh terdiri dari karakter spasi, silahkan gunakan password yang sesuai dengan kriteria tersebut\n");
+        goto menu_password_sesuai_kriteria_perusahaan;
+    }
+
+    while( (strlen(password) <= 6) || (strlen(password) >= 30) ){
+        printf("Password yang didaftarkan harus terdiri dari 6 - 30 karakter, silahkan gunakan Password yang sesuai dengan kriteria tersebut\n");
+        goto menu_password_sesuai_kriteria_perusahaan;
+    }
+
     printf("Nama Perusahaan : ");
     gets(namaPerusahaan);
     konversi_spasi_ke_underscore(namaPerusahaan);
