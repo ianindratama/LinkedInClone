@@ -333,7 +333,6 @@ void daftar_pelamar_kerja_berdasarkanNamaPekerjaan( struct structAkunPerusahaan 
             scanf("%d", &indeks_pelamar_kerja);
             printf("\n");
             fflush(stdin);
-            printf("%d", id_counter[(indeks_pelamar_kerja-1)]);
             accPelamarKerja(&id_counter[(indeks_pelamar_kerja-1)], semuaPekerjaanAppliedKePerusahaan, akunPerusahaan);
         }else if(menu_setelah == 2){
             system("cls");

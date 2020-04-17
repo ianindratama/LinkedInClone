@@ -67,14 +67,14 @@
 
 1587111842 d:\koding\tutorial c\tubesalproproject\main_list_kerja.h
 
-1587114269 source:d:\koding\tutorial c\tubesalproproject\main_list_kerja.c
+1587114428 source:d:\koding\tutorial c\tubesalproproject\main_list_kerja.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"main_perusahaan.h"
 	"main.h"
 
-1587112563 source:d:\koding\tutorial c\tubesalproproject\cari_kerja_pekerja.c
+1587118612 source:d:\koding\tutorial c\tubesalproproject\cari_kerja_pekerja.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

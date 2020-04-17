@@ -228,6 +228,68 @@ void cari_pekerjaan_berdasarkan_nama(struct structAkunPekerja * akunPekerja,stru
 
 }
 
+void cari_pekerjaan_berdasarkan_kategori(struct structAkunPekerja * akunPekerja,struct structCariKerjaList * semuaCariKerjaList){
+
+    char cari_kategori[50];
+    printf("Masukkan Kategori Yang diinginkan : ");
+    gets(cari_kategori);
+
+    int i = 0; int counter = 0;
+    int n = funcJumlahListKerja();
+    int cek = 0;
+    int indeks_kerja[funcJumlahListKerja()];
+    indeks_kerja[0] = 0;
+
+    while(i<=n-1){
+		if( (strcmp( (semuaCariKerjaList+i)->kategoriPerusahaan, cari_kategori ) ) == 0 ){
+            cek = 1;
+            konversi_underscore_ke_spasi_profile( (semuaCariKerjaList+i)->namaPerusahaan);
+            konversi_underscore_ke_spasi_profile( (semuaCariKerjaList+i)->kategoriPerusahaan);
+            konversi_underscore_ke_spasi_profile( (semuaCariKerjaList+i)->nama_pekerjaan);
+            konversi_underscore_ke_spasi_profile( (semuaCariKerjaList+i)->deskripsi_pekerjaan);
+            konversi_underscore_ke_spasi_profile( (semuaCariKerjaList+i)->gaji_pekerjaan);
+            konversi_underscore_ke_spasi_profile( (semuaCariKerjaList+i)->jenis_pekerjaan);
+            konversi_underscore_ke_spasi_profile( (semuaCariKerjaList+i)->fasilitasPerusahaan);
+            konversi_underscore_ke_spasi_profile( (semuaCariKerjaList+i)->alamatPerusahaan);
+
+            printf("\n");counter +=1;
+            printf("%3d Nama Perusahaan : %s\n", counter,  (semuaCariKerjaList+i)->namaPerusahaan);
+            printf("    Kategori Perusahaan : %s\n",  (semuaCariKerjaList+i)->kategoriPerusahaan);
+            printf("    Nama Pekerjaan : %s\n",  (semuaCariKerjaList+i)->nama_pekerjaan);
+            printf("    Deskripsi Pekerjaan : %s\n",  (semuaCariKerjaList+i)->deskripsi_pekerjaan);
+            printf("    Gaji Pekerjaan : %s\n",  (semuaCariKerjaList+i)->gaji_pekerjaan);
+            printf("    Jenis Pekerjaan : %s\n",  (semuaCariKerjaList+i)->jenis_pekerjaan);
+            printf("    Fasilitas Perusahaan : %s\n",  (semuaCariKerjaList+i)->fasilitasPerusahaan);
+            printf("    Alamat Perusahaan : %s\n",  (semuaCariKerjaList+i)->alamatPerusahaan);
+
+            indeks_kerja[counter] = i+1;
+
+		}else{
+			if( (i == n-1)  && (cek == 0)){
+				printf("\nData tidak ditemukan\n");
+			}
+		}
+		i++;
+	}
+
+    int pilihan_menu_setelah_pencarian;
+
+    printf("\n1.Apply Pekerjaan \t 2. Kembali ke Menu Pekerja\n");
+    scanf("%d", &pilihan_menu_setelah_pencarian);
+
+    if(pilihan_menu_setelah_pencarian == 1){
+            int id_pilihan_pekerjaan;
+            printf("Pilih Pekerjaan yang igin Anda Apply (ex:1) : ");
+            scanf("%d", &id_pilihan_pekerjaan);
+            fflush(stdin);
+            apply_pekerjaan(&indeks_kerja[id_pilihan_pekerjaan], semuaCariKerjaList, akunPekerja);
+    }else if(pilihan_menu_setelah_pencarian == 2){
+        system("cls");
+        main_menu_pekerja(akunPekerja);
+    }
+
+}
+
 void cari_pekerjaan_berdasarkan_perusahaan(struct structAkunPekerja * akunPekerja,struct structCariKerjaList * semuaCariKerjaList){
 
     char cari_nama_perusahaan[50];
@@ -521,8 +583,9 @@ void tampilkan_semua_pekerjaan(struct structAkunPekerja * akunPekerja){
         printf("\n");
         printf("Jika ingin apply pekerjaan, ketik \" 1 \"\n");
         printf("Cari pekerjaan berdasarkan Nama Pekerjaan, ketik \" 2 \"\n");
-        printf("Cari pekerjaan berdasarkan Nama Perusahaan, ketik \" 3 \"\n");
-        printf("Jika ingin Logout, ketik \" 4 \"\n");
+        printf("Cari pekerjaan berdasarkan Kategori Perusahaan, ketik \" 3 \"\n");
+        printf("Cari pekerjaan berdasarkan Nama Perusahaan, ketik \" 4 \"\n");
+        printf("Jika ingin Logout, ketik \" 5 \"\n");
 
         int menu_setelah_show_list_kerja;
         scanf("%d", &menu_setelah_show_list_kerja);
@@ -537,8 +600,10 @@ void tampilkan_semua_pekerjaan(struct structAkunPekerja * akunPekerja){
         }else if(menu_setelah_show_list_kerja == 2){
             cari_pekerjaan_berdasarkan_nama(akunPekerja, &semuaCariKerjaList);
         }else if(menu_setelah_show_list_kerja == 3){
-            cari_pekerjaan_berdasarkan_perusahaan(akunPekerja, &semuaCariKerjaList);
+            cari_pekerjaan_berdasarkan_kategori(akunPekerja, &semuaCariKerjaList);
         }else if(menu_setelah_show_list_kerja == 4){
+            cari_pekerjaan_berdasarkan_perusahaan(akunPekerja, &semuaCariKerjaList);
+        }else if(menu_setelah_show_list_kerja == 5){
             system("cls");
             printf("Anda Berhasil Logout\n");
             main();
